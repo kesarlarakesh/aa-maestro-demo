@@ -1,0 +1,97 @@
+# Payment - Enter Card Details - Universal (Web, iOS & Android)
+# Fills in payment card information for all platforms
+
+appId: ${appId}
+name: Payment Page - Enter Card Details
+
+---
+- evalScript: ${console.log('Entering payment information')}
+
+- extendedWaitUntil:
+    visible: Secure Checkout
+    timeout: ${DEFAULT_TIMEOUT}
+
+- swipe:
+    from:
+      text: Total amount
+    direction: UP
+
+- tapOn: Credit/Debit card
+
+- extendedWaitUntil:
+    visible: randText
+    optional: true
+    timeout: ${DEFAULT_TIMEOUT}
+
+- swipe:
+    from:
+      text: Credit/Debit card
+    direction: UP
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn:
+          text: Use another card
+          optional: true
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn:
+          text: Use another card
+          optional: true
+
+- tapOn: Card number
+
+- inputText: ${CARD_NUMBER}
+
+- hideKeyboard:
+    optional: true
+
+- extendedWaitUntil:
+    visible: randText
+    optional: true
+    timeout: ${DEFAULT_TIMEOUT}
+
+- tapOn:
+    text: (Expiry date|MM/yy)
+    index: 0
+
+- inputText: ${CARD_EXPIRY}
+
+- hideKeyboard:
+    optional: true
+
+- extendedWaitUntil:
+    visible: randText
+    optional: true
+    timeout: ${DEFAULT_TIMEOUT}
+
+- tapOn: CVC/CVV
+
+- inputText: ${CARD_CVV}
+
+- hideKeyboard:
+    optional: true
+
+- extendedWaitUntil:
+    visible: randText
+    optional: true
+    timeout: ${DEFAULT_TIMEOUT}
+
+- tapOn: Cardholder name
+
+- inputRandomText
+
+- hideKeyboard:
+    optional: true
+
+- extendedWaitUntil:
+    visible: randText
+    optional: true
+    timeout: ${DEFAULT_TIMEOUT}
+
+- evalScript: ${console.log('Payment details entered')}

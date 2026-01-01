@@ -1,0 +1,12 @@
+# Mobile Setup Flow
+# Executes before each test suite for iOS & Android
+
+appId: ${appId}
+name: Mobile Setup
+
+---
+# Launch app with permissions
+- launchApp:
+    permissions:
+      all: allow
+- evalScript: ${console.log('App launched with all permissions granted')}

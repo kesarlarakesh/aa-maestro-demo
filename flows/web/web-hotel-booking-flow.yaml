@@ -1,0 +1,45 @@
+url: ${url}
+name: Hotels - Single room booking
+env:
+  url: ${url}
+  USERNAME: ${USERNAME}
+  PASSWORD: ${PASSWORD}
+  DEFAULT_TIMEOUT: ${DEFAULT_TIMEOUT}
+  DESTINATION_INPUT: ${DESTINATION_INPUT}
+  CARD_NUMBER: ${CARD_NUMBER}
+  CARD_EXPIRY: ${CARD_EXPIRY}
+  CARD_CVV: ${CARD_CVV}
+
+tags:
+  - hotels
+  - singleroom
+  - web
+  - sanity
+
+# Hooks
+onFlowStart:
+  - runFlow:
+      file: ../../hooks/web/setup.yaml
+
+onFlowComplete:
+  - runFlow:
+      file: ../../hooks/web/teardown.yaml
+
+---
+- runFlow:
+    file: ../../common/web/homepage/select-hotel-lob.yaml
+
+- runFlow:
+    file: ../../hotels/web/searchpage/search-hotels.yaml
+
+- runFlow:
+    file: ../../hotels/web/listingpage/select-hotel.yaml
+
+- runFlow:
+    file: ../../hotels/web/detailspage/select-room.yaml
+
+- runFlow:
+    file: ../../hotels/web/tripdetailspage/fill-guest-info.yaml
+
+- runFlow:
+    file: ../../common/paymentpage/complete-payment.yaml

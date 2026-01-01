@@ -1,0 +1,21 @@
+# Hotel Listing - Select Hotel - Mobile (iOS & Android)
+# Opens first available hotel from listing
+
+appId: ${appId}
+name: Listing Page - Select Hotel (Mobile)
+
+---
+- evalScript: ${console.log('Browsing hotel listing page')}
+
+- assertVisible: .*Sort
+
+- scroll
+
+- tapOn: per room per night
+
+- extendedWaitUntil:
+    visible: randText
+    optional: true
+    timeout: ${DEFAULT_TIMEOUT}
+
+- evalScript: ${console.log('Hotel selected')}

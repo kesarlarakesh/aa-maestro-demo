@@ -1,0 +1,43 @@
+# Navigate to Hotels - Mobile (iOS & Android)
+# Selects the Hotels line of business from home page
+
+appId: ${appId}
+name: Home Page - Navigate to Hotels (Mobile)
+
+---
+- evalScript: ${console.log('Navigating to Hotel Search Page')}
+
+# iOS - Navigate to Hotels
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - extendedWaitUntil:
+          visible: Track and manage your orders in Purchases.
+          timeout: ${DEFAULT_TIMEOUT}
+      - tapOn:
+          point: 79%,84%
+      - tapOn: Hotels
+
+# Android - Navigate to Hotels
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - extendedWaitUntil:
+          visible: randText
+          optional: true
+          timeout: ${DEFAULT_TIMEOUT}
+      - assertVisible: For you
+      - tapOn:
+          point: 60%,41%
+
+# Common validation for both platforms
+- extendedWaitUntil:
+    visible: Search
+    optional: true
+    timeout: ${DEFAULT_TIMEOUT}
+
+- assertVisible: Featured destination
+
+- evalScript: ${console.log('Hotels Search page opened')}

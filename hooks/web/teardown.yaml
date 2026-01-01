@@ -1,0 +1,9 @@
+# Web Teardown Flow
+# Executes after each test suite for Web
+
+url: ${url}
+name: Web Teardown
+
+---
+- stopApp
+- evalScript: ${console.log('Browser is closed')}

@@ -1,0 +1,12 @@
+# Payment - Complete Flow (Universal)
+# Orchestrates payment steps for all platforms
+
+appId: ${appId}
+name: Complete Payment Flow
+
+---
+# Step 1 - Payment Page - Enter Card Details
+- runFlow: enter-card-details.yaml
+
+# Step 2 - Payment Page - Complete Purchase
+- runFlow: purchase-action.yaml

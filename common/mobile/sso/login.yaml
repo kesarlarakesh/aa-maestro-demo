@@ -1,0 +1,31 @@
+# Login Flow - Mobile (iOS & Android)
+# Standard mobile app login flow
+
+appId: ${appId}
+name: Login Flow (Mobile)
+
+---
+- evalScript: ${console.log('Starting login with username (Mobile)')}
+
+- tapOn: Log in with Email
+
+- tapOn: Email
+
+- inputText: ${USERNAME}
+
+- tapOn: Password
+
+- inputText: ${PASSWORD}
+
+- tapOn: Log in
+
+- tapOn: Not Now
+
+- extendedWaitUntil:
+    visible: Messages
+    timeout: 60000
+
+# - assertVisible:
+#     id: 'move_app_tab_bar_item_Messages'
+
+- evalScript: ${console.log('Login successful (iOS/Android)')}

@@ -1,0 +1,14 @@
+# Mobile Teardown Flow
+# Executes after each test suite for iOS & Android
+
+appId: ${appId}
+name: Mobile Teardown Flow
+
+---
+# Clear app cache and state
+- clearState
+- evalScript: ${console.log('App cache cleared')}
+
+# Clear keychain (iOS specific - won't fail on other platforms)
+- clearKeychain
+- evalScript: ${console.log('Keychain cleared (iOS)')}

@@ -1,0 +1,20 @@
+# Hotel Search - Select Dates - Web
+# Selects check-in and check-out dates
+
+appId: ${appId}
+name: Search Page - Select Dates (Web)
+
+---
+- evalScript: ${console.log('Selecting check-in and check-out dates')}
+
+- tapOn: "15"
+
+- tapOn: "18"
+
+- scrollUntilVisible:
+    element: "Confirm"
+    direction: DOWN
+
+- tapOn: "Confirm"
+
+- evalScript: ${console.log('Checkin & Checkout dates are selected')}

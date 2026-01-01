@@ -1,0 +1,37 @@
+# Guest Details - Fill Guest Information - Mobile (iOS & Android)
+# Fills in guest/passenger information form
+
+appId: ${appId}
+name: Guest Details Page - Fill Information (Mobile)
+
+---
+- evalScript: ${console.log('Filling guest information')}
+
+- extendedWaitUntil:
+    visible: Trip Details
+    timeout: ${DEFAULT_TIMEOUT}
+
+- swipe:
+    from:
+      text: Who's checking-in?
+    direction: UP
+
+- scrollUntilVisible:
+    element:
+      text: Room 2
+
+- tapOn: Given name
+
+- inputRandomText
+
+- hideKeyboard
+
+- tapOn: Family name/Surname
+
+- inputRandomText
+
+- hideKeyboard
+
+- tapOn: Continue
+
+- evalScript: ${console.log('Guest information filled')}

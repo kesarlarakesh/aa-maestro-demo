@@ -1,0 +1,12 @@
+# Navigate to Hotels - Web
+# Selects the Hotels line of business from home page
+
+appId: ${appId}
+name: Home Page - Navigate to Hotels (Web)
+
+---
+- evalScript: ${console.log('Navigating to Hotels section')}
+
+- tapOn: Hotels
+
+- evalScript: ${console.log('Hotels Search page opened')}

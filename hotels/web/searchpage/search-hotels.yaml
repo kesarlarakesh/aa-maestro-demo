@@ -1,0 +1,18 @@
+# Hotel Search - Complete Flow (Web)
+# Orchestrates all search-related steps
+
+appId: ${appId}
+name: Complete Hotel Search (Web)
+
+---
+# Step 1 - Enter destination
+- runFlow: enter-destination.yaml
+
+# Step 2 - Select dates
+- runFlow: select-dates.yaml
+
+# Step 3 - Select multi room guests
+- runFlow: select-single-room-guests.yaml
+
+# Step 4 - Perform search
+- runFlow: perform-search.yaml

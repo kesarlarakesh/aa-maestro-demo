@@ -1,0 +1,21 @@
+# Hotel Search - Enter Destination - Mobile (iOS & Android)
+# Enters destination/location for hotel search
+
+appId: ${appId}
+name: Search Page - Enter Destination (Mobile)
+
+---
+- tapOn:
+    id: searchField
+
+- inputText: ${DESTINATION_INPUT}
+
+- extendedWaitUntil:
+    visible:
+      id: listItem_0
+    timeout: ${DEFAULT_TIMEOUT}
+
+- doubleTapOn:
+    id: listItem_0
+
+- evalScript: ${console.log('Destination selected')}

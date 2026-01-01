@@ -1,0 +1,19 @@
+# Payment - Complete Purchase - Universal (Web, iOS & Android)
+# Completes the hotel booking purchase
+
+appId: ${appId}
+name: Payment Page - Complete Purchase
+
+---
+- evalScript: ${console.log('Completing purchase...')}
+
+- scroll
+
+- tapOn: Purchase
+
+- extendedWaitUntil:
+    visible: randText
+    optional: true
+    timeout: ${DEFAULT_TIMEOUT}
+
+- evalScript: ${console.log('Purchase completed successfully')}

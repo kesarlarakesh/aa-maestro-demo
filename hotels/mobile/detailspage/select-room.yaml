@@ -1,0 +1,23 @@
+# Hotel Details - Book Now - Mobile (iOS & Android)
+# Clicks Book Now button on hotel details page
+
+appId: ${appId}
+name: Details Page - Book Now (Mobile)
+
+---
+- evalScript: ${console.log('Proceeding to book a room')}
+
+- swipe:
+    from:
+      text: Top amenities.*
+    direction: UP
+
+- assertVisible: .*Filter.*
+
+- scrollUntilVisible:
+    element:
+      text: Book now
+
+- tapOn: Book now
+
+- evalScript: ${console.log('Selected a room on details page, proceeding to guest details')}

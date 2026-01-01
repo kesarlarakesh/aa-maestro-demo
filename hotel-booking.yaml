@@ -1,0 +1,50 @@
+appId: ${appId}
+name: Hotels - Multi room booking
+env:
+  appId: ${appId}
+  USERNAME: ${USERNAME}
+  PASSWORD: ${PASSWORD}
+  DEFAULT_TIMEOUT: ${DEFAULT_TIMEOUT}
+  DESTINATION_INPUT: ${DESTINATION_INPUT}
+  CARD_NUMBER: ${CARD_NUMBER}
+  CARD_EXPIRY: ${CARD_EXPIRY}
+  CARD_CVV: ${CARD_CVV}
+
+tags:
+  - hotels
+  - multiroom
+  - mobile
+  - ios
+  - android
+  - sanity
+
+# Hooks
+onFlowStart:
+  - runFlow:
+      file: hooks/mobile/setup.yaml
+
+onFlowComplete:
+  - runFlow:
+      file: hooks/mobile/teardown.yaml
+
+---
+- runFlow:
+    file: common/mobile/sso/login.yaml
+
+- runFlow:
+    file: common/mobile/homepage/select-hotel-lob.yaml
+
+- runFlow:
+    file: hotels/mobile/searchpage/search-hotels.yaml
+
+- runFlow:
+    file: hotels/mobile/listingpage/select-hotel.yaml
+
+- runFlow:
+    file: hotels/mobile/detailspage/select-room.yaml
+
+- runFlow:
+    file: hotels/mobile/tripdetailspage/fill-guest-info.yaml
+
+- runFlow:
+    file: common/paymentpage/complete-payment.yaml

@@ -1,0 +1,17 @@
+# Hotel Details - Book Now - Web
+# Clicks Book Now button on hotel details page
+
+appId: ${appId}
+name: Details Page - Book Now (Web)
+
+---
+- evalScript: ${console.log('Proceeding to book a room')}
+
+- scroll
+- scrollUntilVisible:
+    element:
+      text: Book now
+
+- tapOn: Book now
+
+- evalScript: ${console.log('Selected a room on details page, proceeding to guest details')}

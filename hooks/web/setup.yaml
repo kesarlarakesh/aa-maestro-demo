@@ -1,0 +1,9 @@
+# Web Setup Flow
+# Executes before each test suite for Web
+
+url: ${url}
+name: Web Setup
+
+---
+- launchApp
+- evalScript: ${console.log('Browser is launched')}

@@ -1,0 +1,23 @@
+# Hotel Listing - Select Hotel - Web
+# Opens first available hotel from listing
+
+appId: ${appId}
+name: Listing Page - Select Hotel (Web)
+
+---
+- evalScript: ${console.log('Browsing hotel listing page')}
+
+- assertVisible: Sort by
+
+- scroll
+
+- tapOn:
+    text: per room per night
+    index: 1
+
+- extendedWaitUntil:
+    visible: randText
+    optional: true
+    timeout: ${DEFAULT_TIMEOUT}
+
+- evalScript: ${console.log('Hotel selected')}

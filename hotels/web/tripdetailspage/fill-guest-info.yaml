@@ -1,0 +1,43 @@
+# Guest Details - Fill Guest Information - Web
+# Fills in guest information
+
+appId: ${appId}
+name: Guest Details Page - Fill Information (Web)
+
+---
+- evalScript: ${console.log('Filling guest information')}
+
+- extendedWaitUntil:
+    visible: Who's checking-in?
+    timeout: ${DEFAULT_TIMEOUT}
+
+- tapOn:
+    text: Family name/Surname
+    index: 0
+
+- inputRandomText
+
+- tapOn:
+    text: Given name
+    index: 0
+
+- inputRandomText
+
+- scroll
+
+- scrollUntilVisible:
+    element:
+      text: Who's booking?
+
+- tapOn: Email address
+
+- inputRandomEmail
+
+- tapOn: Mobile number
+
+- inputRandomNumber:
+    length: 10
+
+- tapOn: Continue
+
+- evalScript: ${console.log('Guest information filled')}

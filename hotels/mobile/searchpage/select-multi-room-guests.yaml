@@ -1,0 +1,28 @@
+# Hotel Search - Select Rooms and Guests - Mobile (iOS & Android)
+# Configures number of rooms and guests
+
+appId: ${appId}
+name: Search Page - Select Rooms and Guests (Mobile)
+
+---
+- evalScript: ${console.log('Selecting rooms and guests')}
+
+- tapOn: 1 Room.*2 Adult
+
+- tapOn:
+    text: '-'
+    index: 0
+
+- tapOn:
+    text: +
+    index: 0
+
+- tapOn: \+.*Add more rooms
+
+- tapOn:
+    text: +
+    index: 2
+
+- tapOn: Done
+
+- evalScript: ${console.log('Rooms and guests are configured')}

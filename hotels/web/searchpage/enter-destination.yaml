@@ -1,0 +1,28 @@
+# Hotel Search - Enter Destination - Web
+# Enters destination/location for hotel search
+
+appId: ${appId}
+name: Search Page - Enter Destination (Web)
+
+---
+- evalScript: ${console.log('Entering destination')}
+
+- tapOn: Destination
+
+- inputText: ${DESTINATION_INPUT}
+
+- extendedWaitUntil:
+    notVisible:
+      id: '.Dropdown__OptionsContainer-sc-16g04av-11'
+    timeout: ${DEFAULT_TIMEOUT}
+
+- extendedWaitUntil:
+    notVisible:
+      id: '.Dropdown__OptionMainContent-sc-16g04av-22'
+    timeout: ${DEFAULT_TIMEOUT}
+
+- tapOn:
+    text: ${DESTINATION_INPUT}
+    index: 1
+
+- evalScript: ${console.log('Destination selected')}

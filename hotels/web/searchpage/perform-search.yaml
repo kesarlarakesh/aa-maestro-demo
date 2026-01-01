@@ -1,0 +1,17 @@
+# Hotel Search - Execute Search - Web
+# Performs the hotel search
+
+appId: ${appId}
+name: Search Page - Execute Search (Web)
+
+---
+- evalScript: ${console.log('Executing hotel search...')}
+
+- tapOn: Search
+
+- extendedWaitUntil:
+    visible: randText
+    optional: true
+    timeout: ${DEFAULT_TIMEOUT}
+
+- evalScript: ${console.log('Search completed, loading results')}

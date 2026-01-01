@@ -1,0 +1,21 @@
+# Hotel Search - Select Rooms and Guests - Web
+# Configures number of rooms and guests
+
+appId: ${appId}
+name: Search Page - Select Rooms and Guests (Web)
+
+---
+- evalScript: ${console.log('Selecting rooms and guests')}
+
+- scrollUntilVisible:
+    element: '1 Guest & 1 Room'
+    direction: UP
+
+- tapOn: 1 Guest & 1 Room
+
+- tapOn:
+    id: home_adult_add
+
+- tapOn: Done
+
+- evalScript: ${console.log('Rooms and guests configured')}

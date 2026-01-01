@@ -1,0 +1,35 @@
+# Hotel Details - View Photos - Mobile (iOS & Android)
+# Views hotel photos on details page
+
+appId: ${appId}
+name: Details Page - View Photos (Mobile)
+
+---
+- evalScript: ${console.log('Viewing hotel photos')}
+
+# iOS - View photos
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn:
+          text: "\\+\\d+ Photos"
+      - doubleTapOn:
+          point: 52%,32%
+      - swipe:
+          direction: RIGHT
+      - swipe:
+          direction: LEFT
+      - tapOn: 
+      - tapOn: 
+
+# Android - View photos
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn:
+          text: "\\+\\d+ Photos"
+      - tapOn: 
+
+- evalScript: ${console.log('Photos viewed')}
