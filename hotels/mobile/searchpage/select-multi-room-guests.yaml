@@ -1,7 +1,7 @@
 # Hotel Search - Select Rooms and Guests - Mobile (iOS & Android)
 # Configures number of rooms and guests
 
-appId: ${appId}
+appId: ${APPID}
 name: Search Page - Select Rooms and Guests (Mobile)
 
 ---

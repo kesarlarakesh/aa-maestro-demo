@@ -1,7 +1,7 @@
 # Guest Details - Fill Guest Information - Web
 # Fills in guest information
 
-appId: ${appId}
+appId: ${APPID}
 name: Guest Details Page - Fill Information (Web)
 
 ---

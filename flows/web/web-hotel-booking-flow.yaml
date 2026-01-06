@@ -1,9 +1,7 @@
-url: ${url}
+url: ${URL}
 name: Hotels - Single room booking
 env:
-  url: ${url}
-  USERNAME: ${USERNAME}
-  PASSWORD: ${PASSWORD}
+  url: ${URL}
   DEFAULT_TIMEOUT: ${DEFAULT_TIMEOUT}
   DESTINATION_INPUT: ${DESTINATION_INPUT}
   CARD_NUMBER: ${CARD_NUMBER}

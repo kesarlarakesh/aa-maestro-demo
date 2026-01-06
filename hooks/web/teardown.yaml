@@ -1,7 +1,7 @@
 # Web Teardown Flow
 # Executes after each test suite for Web
 
-url: ${url}
+url: ${URL}
 name: Web Teardown
 
 ---

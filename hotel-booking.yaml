@@ -1,7 +1,8 @@
-appId: ${appId}
+appId: ${APPID}
 name: Hotels - Multi room booking
 env:
-  appId: ${appId}
+  appId: ${APPID}
+  ENVIRONMENT: ${ENVIRONMENT}
   USERNAME: ${USERNAME}
   PASSWORD: ${PASSWORD}
   DEFAULT_TIMEOUT: ${DEFAULT_TIMEOUT}

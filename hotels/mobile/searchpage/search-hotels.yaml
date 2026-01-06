@@ -1,7 +1,7 @@
 # Hotel Search - Complete Flow (Mobile)
 # Orchestrates all search-related steps
 
-appId: ${appId}
+appId: ${APPID}
 name: Complete Hotel Search (Mobile)
 
 ---

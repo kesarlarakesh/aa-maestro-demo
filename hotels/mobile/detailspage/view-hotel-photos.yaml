@@ -1,7 +1,7 @@
 # Hotel Details - View Photos - Mobile (iOS & Android)
 # Views hotel photos on details page
 
-appId: ${appId}
+appId: ${APPID}
 name: Details Page - View Photos (Mobile)
 
 ---

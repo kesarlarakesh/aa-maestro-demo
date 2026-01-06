@@ -1,0 +1,158 @@
+name: Maestro Cloud Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run tests against'
+        required: true
+        type: choice
+        options:
+          - dev
+          - staging
+          - production
+        default: 'staging'
+
+jobs:
+  maestro-cloud-android:
+    name: Run Maestro Tests on Android
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment || 'staging' }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Validate Environment Variables
+        run: |
+          echo "Validating environment variables..."
+          [ -z "${{ vars.APPID }}" ] && echo "::error::APPID variable is not set" && exit 1
+          [ -z "${{ vars.ENVIRONMENT }}" ] && echo "::error::ENVIRONMENT variable is not set" && exit 1
+          [ -z "${{ vars.USERNAME }}" ] && echo "::error::USERNAME variable is not set" && exit 1
+          [ -z "${{ vars.PASSWORD }}" ] && echo "::error::PASSWORD variable is not set" && exit 1
+          [ -z "${{ vars.DEFAULT_TIMEOUT }}" ] && echo "::error::DEFAULT_TIMEOUT variable is not set" && exit 1
+          [ -z "${{ vars.DESTINATION_INPUT }}" ] && echo "::error::DESTINATION_INPUT variable is not set" && exit 1
+          [ -z "${{ vars.CARD_NUMBER }}" ] && echo "::error::CARD_NUMBER variable is not set" && exit 1
+          [ -z "${{ vars.CARD_EXPIRY }}" ] && echo "::error::CARD_EXPIRY variable is not set" && exit 1
+          [ -z "${{ vars.CARD_CVV }}" ] && echo "::error::CARD_CVV variable is not set" && exit 1
+          echo "All required variables are set"
+
+      - name: Run Maestro Tests - Android
+        id: android-tests
+        uses: mobile-dev-inc/action-maestro-cloud@v2.0.1
+        with:
+          api-key: ${{ secrets.MAESTRO_CLOUD_API_KEY }}
+          project-id: ${{ secrets.MAESTRO_PROJECT_ID }}
+          app-binary-id: ${{ secrets.ANDROID_APP_BINARY_ID }}
+          workspace: flows/mobile/*
+          env: |
+            APPID:${{ vars.APPID }}
+            ENVIRONMENT:${{ vars.ENVIRONMENT }}
+            USERNAME:${{ vars.USERNAME }}
+            PASSWORD:${{ vars.PASSWORD }}
+            DEFAULT_TIMEOUT:${{ vars.DEFAULT_TIMEOUT }}
+            DESTINATION_INPUT:${{ vars.DESTINATION_INPUT }}
+            CARD_NUMBER:${{ vars.CARD_NUMBER }}
+            CARD_EXPIRY:${{ vars.CARD_EXPIRY }}
+            CARD_CVV:${{ vars.CARD_CVV }}
+
+      - name: Display Android Test Results
+        if: always()
+        run: |
+          echo "Console URL: ${{ steps.android-tests.outputs.MAESTRO_CLOUD_CONSOLE_URL }}"
+          echo "Upload Status: ${{ steps.android-tests.outputs.MAESTRO_CLOUD_UPLOAD_STATUS }}"
+          echo "Flow Results: ${{ steps.android-tests.outputs.MAESTRO_CLOUD_FLOW_RESULTS }}"
+
+  maestro-cloud-ios:
+    name: Run Maestro Tests on iOS
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment || 'staging' }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Validate Environment Variables
+        run: |
+          echo "Validating environment variables..."
+          [ -z "${{ vars.APPID }}" ] && echo "::error::APPID variable is not set" && exit 1
+          [ -z "${{ vars.ENVIRONMENT }}" ] && echo "::error::ENVIRONMENT variable is not set" && exit 1
+          [ -z "${{ vars.USERNAME }}" ] && echo "::error::USERNAME variable is not set" && exit 1
+          [ -z "${{ vars.PASSWORD }}" ] && echo "::error::PASSWORD variable is not set" && exit 1
+          [ -z "${{ vars.DEFAULT_TIMEOUT }}" ] && echo "::error::DEFAULT_TIMEOUT variable is not set" && exit 1
+          [ -z "${{ vars.DESTINATION_INPUT }}" ] && echo "::error::DESTINATION_INPUT variable is not set" && exit 1
+          [ -z "${{ vars.CARD_NUMBER }}" ] && echo "::error::CARD_NUMBER variable is not set" && exit 1
+          [ -z "${{ vars.CARD_EXPIRY }}" ] && echo "::error::CARD_EXPIRY variable is not set" && exit 1
+          [ -z "${{ vars.CARD_CVV }}" ] && echo "::error::CARD_CVV variable is not set" && exit 1
+          echo "All required variables are set"
+
+      - name: Run Maestro Tests - iOS
+        id: ios-tests
+        uses: mobile-dev-inc/action-maestro-cloud@v2.0.1
+        with:
+          api-key: ${{ secrets.MAESTRO_CLOUD_API_KEY }}
+          project-id: ${{ secrets.MAESTRO_PROJECT_ID }}
+          app-binary-id: ${{ secrets.IOS_APP_BINARY_ID }}
+          device-model: iPhone-17-Pro
+          device-os: iOS-18-0
+          workspace: flows/mobile/*
+          env: |
+            APPID:${{ vars.APPID }}
+            ENVIRONMENT:${{ vars.ENVIRONMENT }}
+            USERNAME:${{ vars.USERNAME }}
+            PASSWORD:${{ vars.PASSWORD }}
+            DEFAULT_TIMEOUT:${{ vars.DEFAULT_TIMEOUT }}
+            DESTINATION_INPUT:${{ vars.DESTINATION_INPUT }}
+            CARD_NUMBER:${{ vars.CARD_NUMBER }}
+            CARD_EXPIRY:${{ vars.CARD_EXPIRY }}
+            CARD_CVV:${{ vars.CARD_CVV }}
+
+      - name: Display iOS Test Results
+        if: always()
+        run: |
+          echo "Console URL: ${{ steps.ios-tests.outputs.MAESTRO_CLOUD_CONSOLE_URL }}"
+          echo "Upload Status: ${{ steps.ios-tests.outputs.MAESTRO_CLOUD_UPLOAD_STATUS }}"
+          echo "Flow Results: ${{ steps.ios-tests.outputs.MAESTRO_CLOUD_FLOW_RESULTS }}"
+
+  maestro-cloud-web:
+    name: Run Maestro Tests on Web
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment || 'staging' }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Validate Environment Variables
+        run: |
+          echo "Validating environment variables..."
+          [ -z "${{ vars.URL }}" ] && echo "::error::URL variable is not set" && exit 1
+          [ -z "${{ vars.ENVIRONMENT }}" ] && echo "::error::ENVIRONMENT variable is not set" && exit 1
+          [ -z "${{ vars.DEFAULT_TIMEOUT }}" ] && echo "::error::DEFAULT_TIMEOUT variable is not set" && exit 1
+          [ -z "${{ vars.DESTINATION_INPUT }}" ] && echo "::error::DESTINATION_INPUT variable is not set" && exit 1
+          [ -z "${{ vars.CARD_NUMBER }}" ] && echo "::error::CARD_NUMBER variable is not set" && exit 1
+          [ -z "${{ vars.CARD_EXPIRY }}" ] && echo "::error::CARD_EXPIRY variable is not set" && exit 1
+          [ -z "${{ vars.CARD_CVV }}" ] && echo "::error::CARD_CVV variable is not set" && exit 1
+          echo "All required variables are set"
+
+      - name: Upload to Maestro Cloud - Web
+        id: web-tests
+        uses: mobile-dev-inc/action-maestro-cloud@v2.0.1
+        with:
+          api-key: ${{ secrets.MAESTRO_CLOUD_API_KEY }}
+          project-id: ${{ secrets.MAESTRO_PROJECT_ID }}
+          device-os: web
+          workspace: flows/web/*
+          env: |
+            URL:${{ vars.URL }}
+            ENVIRONMENT:${{ vars.ENVIRONMENT }}
+            DEFAULT_TIMEOUT:${{ vars.DEFAULT_TIMEOUT }}
+            DESTINATION_INPUT:${{ vars.DESTINATION_INPUT }}
+            CARD_NUMBER:${{ vars.CARD_NUMBER }}
+            CARD_EXPIRY:${{ vars.CARD_EXPIRY }}
+            CARD_CVV:${{ vars.CARD_CVV }}
+
+      - name: Display Web Test Results
+        if: always()
+        run: |
+          echo "Console URL: ${{ steps.web-tests.outputs.MAESTRO_CLOUD_CONSOLE_URL }}"
+          echo "Upload Status: ${{ steps.web-tests.outputs.MAESTRO_CLOUD_UPLOAD_STATUS }}"
+          echo "Flow Results: ${{ steps.web-tests.outputs.MAESTRO_CLOUD_FLOW_RESULTS }}"

@@ -1,7 +1,7 @@
 # Hotel Search - Select Dates - Mobile (iOS & Android)
 # Selects check-in and check-out dates
 
-appId: ${appId}
+appId: ${APPID}
 name: Search Page - Select Dates (Mobile)
 
 ---

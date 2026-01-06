@@ -1,7 +1,7 @@
 # Payment - Enter Card Details - Universal (Web, iOS & Android)
 # Fills in payment card information for all platforms
 
-appId: ${appId}
+appId: ${APPID}
 name: Payment Page - Enter Card Details
 
 ---

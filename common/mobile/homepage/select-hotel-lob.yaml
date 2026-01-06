@@ -1,7 +1,7 @@
 # Navigate to Hotels - Mobile (iOS & Android)
 # Selects the Hotels line of business from home page
 
-appId: ${appId}
+appId: ${APPID}
 name: Home Page - Navigate to Hotels (Mobile)
 
 ---
