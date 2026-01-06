@@ -1,7 +1,7 @@
 # Hotel Search - Enter Destination - Mobile (iOS & Android)
 # Enters destination/location for hotel search
 
-appId: ${appId}
+appId: ${APPID}
 name: Search Page - Enter Destination (Mobile)
 
 ---

@@ -1,7 +1,7 @@
 # Mobile Teardown Flow
 # Executes after each test suite for iOS & Android
 
-appId: ${appId}
+appId: ${APPID}
 name: Mobile Teardown Flow
 
 ---

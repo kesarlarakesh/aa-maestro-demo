@@ -1,7 +1,7 @@
 # Hotel Search - Execute Search - Web
 # Performs the hotel search
 
-appId: ${appId}
+appId: ${APPID}
 name: Search Page - Execute Search (Web)
 
 ---

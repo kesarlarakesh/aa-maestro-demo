@@ -1,7 +1,7 @@
 # Payment - Complete Purchase - Universal (Web, iOS & Android)
 # Completes the hotel booking purchase
 
-appId: ${appId}
+appId: ${APPID}
 name: Payment Page - Complete Purchase
 
 ---

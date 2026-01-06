@@ -1,7 +1,7 @@
 # Hotel Listing - Select Hotel - Web
 # Opens first available hotel from listing
 
-appId: ${appId}
+appId: ${APPID}
 name: Listing Page - Select Hotel (Web)
 
 ---

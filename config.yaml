@@ -1,0 +1,21 @@
+flows:
+  - flows/*
+
+# Customised test output directory
+testOutputDir: test_output_directory
+
+# Cloud only config options
+baselineBranch: main
+notifications:
+  email:
+    enabled: true
+    recipients:
+      - itsrakeshkesarla@gmail.com
+
+# Platform Configuration
+platform:
+  ios:
+    snapshotKeyHonorModalViews: false
+    disableAnimations: true
+  android:
+    disableAnimations: true

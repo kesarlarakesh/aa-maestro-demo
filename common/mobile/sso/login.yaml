@@ -1,7 +1,7 @@
 # Login Flow - Mobile (iOS & Android)
 # Standard mobile app login flow
 
-appId: ${appId}
+appId: ${APPID}
 name: Login Flow (Mobile)
 
 ---

@@ -1,7 +1,7 @@
 # Guest Details - Fill Guest Information - Mobile (iOS & Android)
 # Fills in guest/passenger information form
 
-appId: ${appId}
+appId: ${APPID}
 name: Guest Details Page - Fill Information (Mobile)
 
 ---

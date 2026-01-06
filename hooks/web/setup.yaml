@@ -1,7 +1,7 @@
 # Web Setup Flow
 # Executes before each test suite for Web
 
-url: ${url}
+url: ${URL}
 name: Web Setup
 
 ---

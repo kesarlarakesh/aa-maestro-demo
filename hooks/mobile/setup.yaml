@@ -1,7 +1,7 @@
 # Mobile Setup Flow
 # Executes before each test suite for iOS & Android
 
-appId: ${appId}
+appId: ${APPID}
 name: Mobile Setup
 
 ---
