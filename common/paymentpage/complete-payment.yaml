@@ -11,5 +11,5 @@ name: Complete Payment Flow
 # Step 2 - Payment Page - Complete Purchase with Environment Check
 - runFlow:
     when:
-      true: ${environment == 'staging'}
+      true: ${ENVIRONMENT == 'staging'}
     file: purchase-action.yaml

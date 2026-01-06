@@ -10,7 +10,7 @@ notifications:
   email:
     enabled: true
     recipients:
-      - itsrakeshkesarla@gmail.com
+      - testemail@gmail.com
 
 # Platform Configuration
 platform:

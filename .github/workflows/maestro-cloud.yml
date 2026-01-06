@@ -126,8 +126,6 @@ jobs:
           echo "Validating environment variables..."
           [ -z "${{ vars.URL }}" ] && echo "::error::URL variable is not set" && exit 1
           [ -z "${{ vars.ENVIRONMENT }}" ] && echo "::error::ENVIRONMENT variable is not set" && exit 1
-          [ -z "${{ vars.USERNAME }}" ] && echo "::error::USERNAME variable is not set" && exit 1
-          [ -z "${{ vars.PASSWORD }}" ] && echo "::error::PASSWORD variable is not set" && exit 1
           [ -z "${{ vars.DEFAULT_TIMEOUT }}" ] && echo "::error::DEFAULT_TIMEOUT variable is not set" && exit 1
           [ -z "${{ vars.DESTINATION_INPUT }}" ] && echo "::error::DESTINATION_INPUT variable is not set" && exit 1
           [ -z "${{ vars.CARD_NUMBER }}" ] && echo "::error::CARD_NUMBER variable is not set" && exit 1
@@ -146,8 +144,6 @@ jobs:
           env: |
             URL:${{ vars.URL }}
             ENVIRONMENT:${{ vars.ENVIRONMENT }}
-            USERNAME:${{ vars.USERNAME }}
-            PASSWORD:${{ vars.PASSWORD }}
             DEFAULT_TIMEOUT:${{ vars.DEFAULT_TIMEOUT }}
             DESTINATION_INPUT:${{ vars.DESTINATION_INPUT }}
             CARD_NUMBER:${{ vars.CARD_NUMBER }}
